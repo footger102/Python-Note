@@ -31,3 +31,25 @@
   #output
   139828567365696
   139828567365696
+
+
+# id는 컴퓨터마다 다릅니다. 이걸 어떻게 해결해야 할까요? None value를 이용하면 됩니다.
+# After we check whether an argument was provided, we can instantiate a new list if it wasn’t.
+# We can use None as a speciali value to indicate we did not receive anything.
+
+
+  def createStudent(name, age, grades=None):
+    if grades is None:
+      grades = []
+    return {
+      'name': name,
+      'age': age,
+      'grades': grades
+    }
+ 
+  def addGrade(student, grade):
+    student['grades'].append(grade)
+    # To help visualize the grades we have added a print statement
+    print(student['grades'])
+    
+# 이게 mutable default arguments의 issue를 피하기 위한 most common way입니다. 

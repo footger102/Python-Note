@@ -53,3 +53,38 @@
     print(student['grades'])
     
 # 이게 mutable default arguments의 issue를 피하기 위한 most common way입니다. 
+
+
+
+
+#  Funtional Argument : *arg
+
+#  매개변수 앞에 *를 붙이면 입력값을 모아 tuple로 만듭니다.
+
+  def my_function(*args):
+    print(args)
+    
+  my_function('Arg1', 245, False)
+  
+  # output : ('Arg1', 245, False)
+  
+# 이거는 어떨 때 도움이 되냐면, 함수를 정의할 때 몇 개의 input이 들어올 지 모르니까, *(unpacking operator)를 이용해서 input 개수에 제한없이 함수를 정의할 수 있다. 
+
+  def print_order(*order_items):
+    print(order_items)
+
+  print_order('Orange Juice', 'Apple Juice', 'Scrambled Eggs', 'Pancakes')
+  
+# Keywords Arguments : **kwarg
+# 매개변수 앞에 **(keywords arguments)를 붙이면 x = 1 형태가 {x : 1}의 dictionary로 저장됨
+
+  def func(**kwarg):
+    print(kwarg)
+    
+  func(x = 1)
+  
+  # output : {x : 1}
+  
+
+  
+

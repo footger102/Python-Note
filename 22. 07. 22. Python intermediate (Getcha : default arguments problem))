@@ -1,4 +1,4 @@
-#getcha : a counterintuitive feature of a programming language that often leads to mistakes in programs
+#gotcha : a counterintuitive feature of a programming language that often leads to mistakes in programs
 #예시는 다음과 같습니다.
 
 
@@ -17,7 +17,7 @@
   addGrade(dallas, 100)
   
   
-# 이것의 결과는 [90]; [100]이 아니라 [90]; [90, 100]입니다. 왜 그럴까요? 직관에 반하는 결과가 나온건데 이런걸 getcha라고 합니다.
+# 이것의 결과는 [90]; [100]이 아니라 [90]; [90, 100]입니다. 왜 그럴까요? 직관에 반하는 결과가 나온건데 이런걸 gotcha라고 합니다.
 # 이것이 왜 그러냐면..
 # 파이썬에는 mutable object(ex. list, set, dictionary)와 immutable object(ex. int, float tuple, string)으로 나뉩니다.
 # 그러니까 우리가 function을 정의할 때, parameter의 default value를 한 번 정하면, 그게 계속 쓰여서 그렇습니다.
@@ -86,5 +86,45 @@
   # output : {x : 1}
   
 
+# 함수를 정의할 때뿐만 아니라, function을 call할 때도 *나 **를 사용할 수 있다. 
+
+  my_num_list = [3, 6, 9]
+ 
+  def sum(num1, num2, num3):
+    print(num1 + num2 + num3)
+ 
+  sum(*my_num_list)
+
+  # output : 18
+  # function definition에서 unpacking operator를 쓰면 comma로 분류되는 input들이 tuple로 모아지는 건데
+  # function call할 때 *를 쓰면 tuple이나 list가 comma로 분류되는 것이다.
   
+  numbers  = {'num1': 3, 'num2': 6, 'num3': 9}
+ 
+  def sum(num1, num2, num3):
+    print(num1 + num2 + num3)
+ 
+  sum(**numbers)
+  
+  # output : 18
+  # function definition에서 **를 쓰면 variable = input의 형태가 {variable : input}의 dictionary로 바뀌는 것인데
+  # function call할 때 **를 쓰면 {variable : input}의 dictionary가 variable = input으로 바뀐다. 
+
+# 이게 외않됄까?
+
+  def func(**kwargs, param1):
+    pass
+    
+# 코드아카데미의 해설 : Correct! This would be invalid since no keyword arguments can proceed **kwargs and would produce a SyntaxError.
+# func(x = 1, 5) 이렇게 call하면 되는 거 아닌가? 이게 외않돼지?
+
+# 프로젝트하면서 새로 알게 된 것들
+
+  x, y = (0, 1)
+  <=> x = 1, y = 2
+  # tuple을 다른 변수로 분리 가능. 이건 unpacking operator 쓰는 게 오히려 더 불편하다.
+
+  # import 기능으로 다른 파일의 데이터도 가져올 수 있다.
+  
+  # return output1, output2, ... 의 형태로 함수의 출력을 여러 개로 설정할 수 있다. 이렇게 하면 함수의 출력이 tuple로 저장된다. 
 
